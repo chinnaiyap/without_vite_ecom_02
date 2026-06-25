@@ -1,37 +1,19 @@
 //=======================================//
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import API_URL from "../services/api";
-
+// import API_URL from "../services/api";
+const API_URL = process.env.REACT_APP_API_URL;
 export default function Register() {
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
-  const [email, setEmail] =
-    useState("");
-  const [password, setPassword] =
-    useState("");
-  const [
-    confirmPassword,
-    setConfirmPassword,
-  ] = useState("");
-
-  const [error, setError] =
-    useState("");
-
-  const [loading, setLoading] =
-    useState(false);
-
-  const [
-    showPassword,
-    setShowPassword,
-  ] = useState(false);
-
-  const [
-    showConfirmPassword,
-    setShowConfirmPassword,
-  ] = useState(false);
-
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword,setConfirmPassword,] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword,] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword,] = useState(false);
   const getPasswordStrength = () => {
     if (password.length < 6)
       return "Weak";
@@ -81,6 +63,7 @@ export default function Register() {
     setLoading(true);
 
     try {
+      console.log("API_URL =", API_URL);
       const response =
         await fetch(
           `${API_URL}/api/auth/register`,

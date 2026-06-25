@@ -1,13 +1,17 @@
+
 import Navbar from "./components/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "./Summary.css";
 
+
 import TodoList from "./components/TodoList";
 
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Summary() {
+  const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [total, setTotal] = useState(0);
 
@@ -121,9 +125,21 @@ export default function Summary() {
       <Navbar />
 
       <div className="container summary-page">
-        <h2 className="summary-title">Todo Summary</h2>
 
-        <h4 className="summary-total">Total Todos: {total}</h4>
+        <div className="d-flex justify-content-between align-items-center mb-3">
+          <h2 className="summary-title mb-0">Todo Summary</h2>
+
+          <button
+            className="btn btn-primary"
+            onClick={() => navigate("/")}
+          >
+            ← Back To Todo
+          </button>
+        </div>
+
+        <h4 className="summary-total">
+          Total Todos: {total}
+        </h4>
 
         {/* Summary Table */}
         <table className="table summary-table mt-3">
@@ -215,7 +231,7 @@ export default function Summary() {
             </div>
           </div>
         </div>
-      </div>
+      </div >
     </>
   );
 }
