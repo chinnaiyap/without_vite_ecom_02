@@ -1,6 +1,9 @@
-// const API_URL = process.env.REACT_APP_API_URL;
+//===============localhost=======//
+// const API_URL = "http://localhost:8000";
 // export default API_URL;
+//===============localhost=======//
 
-const API_URL = "http://localhost:8000";
-
+//===============renderdeployed=======//
+const API_URL = "https://backend-gkms.onrender.com";
 export default API_URL;
+//===============renderdeployed=======//
